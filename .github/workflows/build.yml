@@ -16,24 +16,7 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           channel: stable
-          flutter-version: 3.47.2
-
-      - name: Patch Flutter internal Kotlin version
-        run: |
-          echo "=== Looking for Flutter gradle files ==="
-          ls -la "$FLUTTER_ROOT/packages/flutter_tools/gradle/" 2>/dev/null || echo "Directory not found"
-          find "$FLUTTER_ROOT" -name "build.gradle*" -path "*/gradle/*" 2>/dev/null | head -10
-          
-          # Try patching build.gradle.kts
-          FILE="$FLUTTER_ROOT/packages/flutter_tools/gradle/build.gradle.kts"
-          if [ -f "$FILE" ]; then
-            echo "Found build.gradle.kts, patching..."
-            sed -i 's/kotlin("org.jetbrains.kotlin:kotlin-gradle-plugin").*/kotlin("org.jetbrains.kotlin:kotlin-gradle-plugin") version "1.8.22"/' "$FILE"
-            cat "$FILE"
-          else
-            echo "build.gradle.kts not found"
-            cat "$FILE" 2>/dev/null || true
-          fi
+          flutter-version: 3.13.0
 
       - run: flutter pub get
 
