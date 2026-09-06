@@ -16,14 +16,7 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           channel: stable
-          flutter-version: 3.24.0
-
-      - name: Patch Flutter's Kotlin version
-        run: |
-          KOTLIN_GRADLE_PLUGIN="\$FLUTTER_ROOT/packages/flutter_tools/gradle/build.gradle.kts"
-          if [ -f "\$KOTLIN_GRADLE_PLUGIN" ]; then
-            sed -i 's/kotlin("org.jetbrains.kotlin:kotlin-gradle-plugin").+)/kotlin("org.jetbrains.kotlin:kotlin-gradle-plugin") version "1.8.22"/' "\$KOTLIN_GRADLE_PLUGIN"
-          fi
+          flutter-version: 3.47.2
 
       - run: flutter pub get
 
