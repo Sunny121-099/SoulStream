@@ -28,3 +28,11 @@ subprojects {
         }
     }
 }
+
+subprojects {
+    project.plugins.withId("kotlin-android") {
+        project.kotlin {
+            jvmToolchain(17)
+        }
+    }
+}
