@@ -6,6 +6,7 @@ allprojects {
 }
 
 rootProject.buildDir = "../build"
+
 subprojects {
     project.buildDir = "${rootProject.buildDir}/${project.name}"
 }
@@ -24,16 +25,6 @@ subprojects {
                 if (namespace != null) {
                     namespace project.namespace
                 }
-                compileOptions {
-                    sourceCompatibility = JavaVersion.VERSION_1_8
-                    targetCompatibility = JavaVersion.VERSION_1_8
-                }
-            }
-        }
-        project.tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
-            kotlinOptions {
-                jvmTarget = "1.8"
-                languageVersion = "1.8"
             }
         }
     }
