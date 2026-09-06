@@ -16,7 +16,12 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           channel: stable
-          flutter-version: 3.13.0
+          flutter-version: 3.24.0
+
+      - name: Patch Kotlin version in Flutter gradle
+        run: |
+          # Find and patch the Kotlin version in Flutter's gradle files
+          find "$FLUTTER_ROOT" -name "*.gradle*" -o -name "*.gradle.kts" 2>/dev/null | xargs grep -l "kotlin-gradle-plugin" 2>/dev/null | head -5
 
       - run: flutter pub get
 
