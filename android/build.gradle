@@ -31,6 +31,15 @@ tasks.register("clean", Delete) {
 
 subprojects {
     afterEvaluate { project ->
+        project.configurations.all { config ->
+            config.resolutionStrategy.eachDependency { dep ->
+                if (dep.requested.group == "org.jetbrains.kotlin" && 
+                    dep.requested.name.startsWith("kotlin")) {
+                    dep.useVersion "1.8.22"
+                    dep.because "Force Kotlin to 1.8.22"
+                }
+            }
+        }
         if (project.hasProperty("android")) {
             project.android {
                 if (namespace != null) {
