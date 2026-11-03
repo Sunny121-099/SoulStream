@@ -21,7 +21,10 @@ jobs:
 
       - run: flutter pub get
 
-      - run: flutter build apk --debug
+      # Temporary diagnostic run: verbose output helps identify which
+      # Gradle plugin/configuration enables resource shrinking.
+      - name: Build APK with diagnostic output
+        run: flutter build apk --debug --verbose
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
