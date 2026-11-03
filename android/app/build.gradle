@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.example.soulstream"
-    compileSdk = 35
+    compileSdk = 34
     ndkVersion = "27.0.12077973"
 
     compileOptions {
@@ -20,8 +20,8 @@ android {
 
     defaultConfig {
         applicationId = "com.example.soulstream"
-        minSdk = 24
-        targetSdk = 35
+        minSdk = 23
+        targetSdk = 34
         versionCode = flutter.versionCode
         versionName = flutter.versionName
         multiDexEnabled true

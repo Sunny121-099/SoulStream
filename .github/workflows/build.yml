@@ -17,6 +17,7 @@ jobs:
         with:
           channel: stable
           flutter-version: 3.24.0
+          java-version: '17'
 
       - run: flutter pub get
 
