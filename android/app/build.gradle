@@ -28,6 +28,10 @@ android {
     }
 
     buildTypes {
+        debug {
+            // Explicitly disable resource shrinking for debug builds.
+            shrinkResources false
+        }
         release {
             minifyEnabled false
             signingConfig = signingConfigs.debug
