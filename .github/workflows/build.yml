@@ -1,5 +1,7 @@
 name: Build APK
 
+permissions: contents: write
+
 on:
   push:
     branches: [ main ]
@@ -31,3 +33,9 @@ jobs:
         with:
           name: app-debug
           path: build/app/outputs/flutter-apk/app-debug.apk
+
+      - name: Release APK
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1.0.${{ github.run_number }}
+          files: build/app/outputs/flutter-apk/app-debug.apk
