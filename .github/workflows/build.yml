@@ -1,6 +1,7 @@
 name: Build APK
 
-permissions: contents: write
+permissions:
+  contents: write
 
 on:
   push:
@@ -15,11 +16,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
       - uses: subosito/flutter-action@v2
         with:
           channel: stable
           flutter-version: 3.24.0
-          java-version: '17'
 
       - run: flutter pub get
 
